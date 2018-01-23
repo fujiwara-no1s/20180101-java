@@ -20,7 +20,6 @@ public class PropertyUtil {
       }
       InputStream fileStream = new FileInputStream(file);
       properties.load(fileStream);
-//      properties.load(Files.newBufferedReader(Paths.get(file.getAbsolutePath()), StandardCharsets.UTF_8));
     } catch (IOException e) {
       e.printStackTrace();
       System.out.println("fail to load setting.propertiess");
