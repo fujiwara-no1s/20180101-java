@@ -46,25 +46,12 @@ public class MyOkHttp {
   public void get(String url) throws Exception {
     // craete get request
     Request request = new Request.Builder().url(url).build();
-    /*
-    try {
-      // get
-      response = client.newCall(request).execute();
-    } catch (IOException e) {
-      throw new Exception("Error: fail to get " + url);
-    }
-    */
-    
-
     Call call = client.newCall(request);
     try (Response response = call.execute()) {
       isSuccess(response);
       body = response.body().string();
-      //response.body().close();
     } catch (IOException e) {
       throw new Exception("Error: fail to get " + url);
-    } finally {
-      //response.body().close();
     }
   }
 
@@ -80,16 +67,6 @@ public class MyOkHttp {
     
     // create post request
     Request request = new Request.Builder().url(url).post(requestBody).build();
-    /*
-    try {
-      // post
-      response = client.newCall(request).execute();
-    } catch (IOException e) {
-      throw new Exception("Error: fail to post " + url);
-    }
-    isSuccess();
-    */
-    
     Call call = client.newCall(request);
     try (Response response = call.execute()) {
       isSuccess(response);
@@ -108,13 +85,10 @@ public class MyOkHttp {
   }
   
   public String getBody() throws IOException {
-    // return response body  
-    //return response.body().string();
     return body;
   }
   
   public void close() {
-    //response.close();
-    //response.body().close();    
+    // nothing to do
   }
 }
