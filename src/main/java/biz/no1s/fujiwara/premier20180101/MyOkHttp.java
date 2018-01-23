@@ -60,11 +60,12 @@ public class MyOkHttp {
     try (Response response = call.execute()) {
       isSuccess(response);
       body = response.body().string();
-      response.body().close();
+      //response.body().close();
     } catch (IOException e) {
       throw new Exception("Error: fail to get " + url);
+    } finally {
+      //response.body().close();
     }
-    
   }
 
   public void post(String url,Map<String,String> postMap) throws Exception {
